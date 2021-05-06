@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   background: rgb(236,216,225);
   background: -moz-linear-gradient(90deg, rgba(236,216,225,1) 0%, rgba(200,217,238,1) 100%);
   background: -webkit-linear-gradient(90deg, rgba(236,216,225,1) 0%, rgba(200,217,238,1) 100%);
@@ -16,44 +16,129 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ecd8e1",endColorstr="#c8d9ee",GradientType=1);
 }
 
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-wrapper * {
+  box-sizing: border-box;
+}
+
+.carousel {
+  transform-style: preserve-3d;
+}
+
+.carousel__photo {
+  opacity: 0;
+  position: absolute;
+  top:0;
+  width: 100%;
+  margin: auto;
+  padding: 1rem 4rem;
+  z-index: 100;
+  transition: transform .5s, opacity .5s, z-index .5s;
+  transform: translate(38%, 15%);
+  width: 800px;
+}
+
+.carousel__photo.initial,
+.carousel__photo.active {
+  opacity: 1;
+  position: relative;
+  z-index: 900;
+}
+
+.carousel__photo.prev,
+.carousel__photo.next {
+  z-index: 800;
+}
+.carousel__photo.prev {
+  transform: translateX(-100%);
+}
+.carousel__photo.next {
+  transform: translateX(100%);
+}
+
+.carousel__button--prev,
+.carousel__button--next {
+  position: absolute;
+  top:50%;
+  width: 3rem;
+  height: 3rem;
+  background-color: #FFF;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  border: 1px solid black;
+}
+.carousel__button--prev {
+  left: 15%;
+}
+.carousel__button--next {
+  right: 15%;
+}
+
 p.header {
   text-transform: uppercase;
   text-align: center;
   font-size: 25px;
   color: #fff;
-  margin: 45px;
   font-weight: 800;
 }
 
-.first-item {
-  height: 350px;
-  transform: translateX(40%);
-}
-
-p.name-of-the-image {
+.carousel-title {
   text-align: center;
   color: #fff;
   font-size: 20px;
+  margin-top: 60px;
 }
 
-button.left-side {
-  cursor: pointer;
-  background: transparent;
-  width: 30px;
-  height: 40px;
-  font-size: 30px;
-  color: #fff;
-  border: none;
-  transform: translate(190px, -180px);
+.bottoms-flipping {
+  text-align: center;
 }
 
-button.right-side {
-  cursor: pointer;
+button.left-circle {
+  width: 25px;
+  height: 25px;
   background: transparent;
-  width: 30px;
-  height: 40px;
-  font-size: 30px;
-  color: #fff;
   border: none;
-  transform: translate(1175px, -180px);
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 9px;
+}
+
+button.left-circle:focus {
+  color: #a2a0a0;
+}
+
+button.middle-circle {
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 9px;
+}
+
+button.middle-circle:focus {
+  color: #a2a0a0;
+}
+
+button.right-circle {
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button.right-circle:focus {
+  color: #a2a0a0;
 }
