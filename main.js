@@ -40,7 +40,6 @@ var store = Redux.createStore(reducer, {
 const e = React.createElement;
 
 function render() {
-
   ReactDOM.render (
     e(ReactRedux.Provider, {store: store}, [
       e('div', {className: 'carousel-items'}, [
@@ -55,8 +54,6 @@ function render() {
           }}, [ e('i', {className: 'fas fa-chevron-right'}, null)]),
         ]),
         e('p', {className: 'title-one'}, 'First slide'),
-
-
         e('div', {className: 'bottoms-flipping'}, [
           e('button', {className: 'indicator', onClick: function(event) {
             store.dispatch({type: 'FIRST-IMG-INDICATOR'})

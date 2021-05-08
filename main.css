@@ -124,3 +124,24 @@ button.indicator {
 button.indicator:active {
   color: #929191;
 }
+
+@media screen and (max-width: 800px) {
+  .carousel__photo {
+    padding: 0;
+    position: relative;
+  }
+
+  .carousel__button--prev {
+    left: 24px;
+  }
+
+  button.carousel__button--next {
+    right: 24px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  p.contacts {
+    bottom: -10px;
+  }
+}
