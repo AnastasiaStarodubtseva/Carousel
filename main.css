@@ -32,10 +32,11 @@ p.header {
   font-weight: 800;
 }
 
-p.title-one {
+p.title {
   text-align: center;
   color: #fff;
   font-size: 20px;
+  text-transform: uppercase;
 }
 
 .carousel__photo {
@@ -43,7 +44,9 @@ p.title-one {
   width: 100%;
   margin: auto;
   transition: transform .5s, opacity .5s, z-index .5s;
-  padding: 0 150px;
+  display: block;
+  width: 50%;
+  height: 50%;
 }
 
 .carousel__photo.prev {
@@ -58,6 +61,7 @@ p.title-one {
   z-index: 1001;
   left: 15%;
 }
+
 .carousel__photo.next {
   transform: translateX(100%);
   z-index: 800;
@@ -125,9 +129,10 @@ button.indicator:active {
   color: #929191;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
   .carousel__photo {
-    padding: 0;
+    width: 100%;
+    height: 50%;
     position: relative;
   }
 
