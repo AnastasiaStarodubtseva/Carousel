@@ -37,6 +37,7 @@ function handleTouchStart(event) {
 }
 
 function handleTouchMove(event) {
+  console.log(event);
   if (!store.getState().xDown) {
     return;
   }
@@ -48,6 +49,8 @@ function handleTouchMove(event) {
   } else {
     store.dispatch({type: 'PREVIOUS-IMAGE'})
   }
+
+  store.dispatch({type: 'SET-TOUCH-DOWN', x: null});
 }
 
 const e = React.createElement;
@@ -66,7 +69,7 @@ function render() {
         e('div', {className: 'main'}, [
           e('div', {className: 'img-section'}, [
             e('img', {className: 'carousel__photo', src: store.getState().images[store.getState().currentIndex].urls.small,
-                onTouchMove: handleTouchMove, onTouchStart: handleTouchStart }, null),
+                onTouchMove: handleTouchMove, onTouchStart: handleTouchStart}, null),
             e('button', {className: 'carousel__button--prev', onClick: function(event) {
               store.dispatch({type: 'PREVIOUS-IMAGE'})
             }}, [ e('i', {className: 'fas fa-chevron-left'}, null)], null),
