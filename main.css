@@ -16,6 +16,7 @@ body {
   background: linear-gradient(90deg, rgba(236,216,225,1) 0%, rgba(200,217,238,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ecd8e1",endColorstr="#c8d9ee",GradientType=1);
   margin: 0;
+  overflow: hidden;
 }
 
 .carousel-items {
@@ -30,6 +31,7 @@ p.header {
   font-size: 25px;
   color: #fff;
   font-weight: 800;
+  margin-bottom: 76px;
 }
 
 p.title {
@@ -40,39 +42,10 @@ p.title {
 }
 
 .carousel__photo {
-  top:0;
-  width: 100%;
   margin: auto;
-  transition: transform .5s, opacity .5s, z-index .5s;
   display: block;
-  width: 50%;
-  height: 50%;
-}
-
-.carousel__photo.prev {
-  transform: translateX(-100%);
-  z-index: 800;
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  transform: translateY(50%);
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1001;
-  left: 15%;
-}
-
-.carousel__photo.next {
-  transform: translateX(100%);
-  z-index: 800;
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  transform: translateY(50%);
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1001;
-  right: 15%;
+  width: 447px;
+  height: 400px;
 }
 
 .bottoms-flipping {
@@ -129,7 +102,23 @@ button.indicator:active {
   color: #929191;
 }
 
+.main {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-section {
+  display: flex;
+  overflow-x: visible;
+  transition-property: transform;
+  will-change: transform;
+}
+
 @media screen and (max-width: 600px) {
+  img.carousel__photo {
+    height: 400px;
+  }
+
   .carousel__photo {
     width: 100%;
     height: 50%;
@@ -137,16 +126,11 @@ button.indicator:active {
   }
 
   .carousel__button--prev {
-    left: 24px;
+    left: 10px;
   }
 
   button.carousel__button--next {
-    right: 24px;
+    right: 10px;
   }
 }
 
-@media screen and (max-width: 540px) {
-  p.contacts {
-    bottom: -10px;
-  }
-}
