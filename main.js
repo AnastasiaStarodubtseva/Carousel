@@ -20,6 +20,9 @@ function reducer(model, action) {
     case 'SET-TOUCH-DOWN':
       model.xDown = action.x;
       return model;
+    case 'CASE-TOUCH-UP':
+      model.xUp = action.x;
+      return model;
     default:
       return model;
   }
@@ -28,7 +31,8 @@ function reducer(model, action) {
 var store = Redux.createStore(reducer, {
   images: [],
   currentIndex: 0,
-  xDown: null
+  xDown: null,
+  xUp: null
 })
 
 function handleTouchStart(event) {
@@ -37,20 +41,22 @@ function handleTouchStart(event) {
 }
 
 function handleTouchMove(event) {
-  console.log(event);
   if (!store.getState().xDown) {
     return;
   }
-  var xUp = event.touches[0].clientX;
-  var xDiff = store.getState().xDown - xUp;
+  const inMovement = event.touches[0];
+  store.dispatch({type: 'CASE-TOUCH-UP'})
+};
 
+function handleTouchEnd(event) {
+  var xDiff = store.getState().xDown - store.getState().xUp;
   if (xDiff > 0) {
     store.dispatch({type: 'NEXT-IMAGE'})
   } else {
     store.dispatch({type: 'PREVIOUS-IMAGE'})
   }
 
-  store.dispatch({type: 'SET-TOUCH-DOWN', x: null});
+  store.dispatch({type: 'CASE-TOUCH-UP', x: null});
 }
 
 const e = React.createElement;
@@ -69,7 +75,7 @@ function render() {
         e('div', {className: 'main'}, [
           e('div', {className: 'img-section'}, [
             e('img', {className: 'carousel__photo', src: store.getState().images[store.getState().currentIndex].urls.small,
-                onTouchMove: handleTouchMove, onTouchStart: handleTouchStart}, null),
+                onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd, onTouchMove: handleTouchMove}, null),
             e('button', {className: 'carousel__button--prev', onClick: function(event) {
               store.dispatch({type: 'PREVIOUS-IMAGE'})
             }}, [ e('i', {className: 'fas fa-chevron-left'}, null)], null),
