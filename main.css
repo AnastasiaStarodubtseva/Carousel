@@ -92,6 +92,7 @@ button.indicator.active {
   height: 34px;
   border-radius: 34px;
   background-color: #fff;
+  padding: 0;
 }
 
 button.carousel__button--next {
@@ -114,6 +115,7 @@ button.carousel__button--next:active {
   height: 34px;
   border-radius: 34px;
   background-color: #fff;
+  padding: 0;
 }
 
 button.indicator {
