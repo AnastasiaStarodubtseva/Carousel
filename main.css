@@ -74,17 +74,24 @@ button.indicator.active {
 
 .carousel__button--prev {
   left: 54px;
-  width: 34px;
-  height: 34px;
   transform: translateY(-50%);
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   color: #fff;
   font-size: 20px;
   position: absolute;
   top: 50%;
   cursor: pointer;
   position: fixed;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel__button--prev:active {
+  color: #2e2d2d;
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  background-color: #fff;
 }
 
 button.carousel__button--next {
@@ -98,6 +105,15 @@ button.carousel__button--next {
   top: 50%;
   cursor: pointer;
   position: fixed;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button.carousel__button--next:active {
+  color: #2e2d2d;
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  background-color: #fff;
 }
 
 button.indicator {
