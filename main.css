@@ -50,7 +50,12 @@ p.title {
 
 .bottoms-flipping {
   text-align: center;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 103px;
 }
+
 
 button.indicator {
   width: 25px;
@@ -134,5 +139,10 @@ button.indicator:active {
   button.carousel__button--next {
     right: 10px;
   }
+
+  .bottoms-flipping {
+    bottom: 31px;
+  }
+
 }
 

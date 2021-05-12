@@ -23,10 +23,14 @@ function reducer(model, action) {
     case 'CASE-TOUCH-UP':
       model.xUp = action.x;
       return model;
+    case 'SET-CURRENT-INDEX':
+      model.currentIndex = action.index;
+      return model;
     default:
       return model;
   }
 }
+
 
 var store = Redux.createStore(reducer, {
   images: [],
@@ -86,21 +90,15 @@ function render() {
         ]),
         e('p', {className: 'title'}, store.getState().images[store.getState().currentIndex].alt_description),
         e('div', {className: 'bottoms-flipping'}, [
-          e('button', {className: 'indicator', onClick: function(event) {
-            store.dispatch({type: 'INDICATOR'})
-          }}, [
-            e('i', {className: 'fas fa-circle'}, null)
-          ]),
-          e('button', {className: 'indicator', onClick: function(event) {
-            store.dispatch({type: 'INDICATOR'})
-          }}, [
-            e('i', {className: 'fas fa-circle'}, null)
-          ]),
-          e('button', {className: 'indicator', onClick: function(event) {
-            store.dispatch({type: 'INDICATOR'})
-          }}, [
-            e('i', {className: 'fas fa-circle'}, null)
-          ])
+          store.getState().images.map(function(image, index) {
+            return (
+              e('button', {className: 'indicator', onClick: function(event) {
+                store.dispatch({type: 'SET-CURRENT-INDEX', index: index })
+              }}, [
+                e('i', {className: 'fas fa-circle'}, null)
+              ])
+            )
+          })
         ]),
       ]),
     ]),
