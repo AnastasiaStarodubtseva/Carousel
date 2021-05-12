@@ -31,7 +31,6 @@ function reducer(model, action) {
   }
 }
 
-
 var store = Redux.createStore(reducer, {
   images: [],
   currentIndex: 0,
@@ -92,7 +91,7 @@ function render() {
         e('div', {className: 'bottoms-flipping'}, [
           store.getState().images.map(function(image, index) {
             return (
-              e('button', {className: 'indicator', onClick: function(event) {
+              e('button', {className: 'indicator ' + (store.getState().currentIndex === index ? 'active' : ''), onClick: function(event) {
                 store.dispatch({type: 'SET-CURRENT-INDEX', index: index })
               }}, [
                 e('i', {className: 'fas fa-circle'}, null)
