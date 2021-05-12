@@ -78,6 +78,7 @@ button.indicator.active {
   position: absolute;
   top: 50%;
   cursor: pointer;
+  position: fixed;
 }
 
 button.carousel__button--next {
@@ -90,6 +91,7 @@ button.carousel__button--next {
   position: absolute;
   top: 50%;
   cursor: pointer;
+  position: fixed;
 }
 
 button.indicator {
